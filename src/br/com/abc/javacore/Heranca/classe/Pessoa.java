@@ -8,13 +8,19 @@ public class Pessoa extends Object{
     protected String cpf;
     private   Integer   idade;
     private   Character categoria; 
+    private   Boolean   teste = Boolean.FALSE;
     protected Endereco endereco;
+    private Double salario;
+    private String cargo;
+    
 
-    public Pessoa(String nome, String cpf, Integer idade, Character categoria) {
+    public Pessoa(String nome, String cpf, Integer idade, Character categoria, Double salario, String cargo) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
         this.categoria = categoria;
+        this.salario = salario;
+        this.cargo = cargo;
     }
 
     public Pessoa() {
@@ -53,9 +59,33 @@ public class Pessoa extends Object{
         return "Pessoa{" + "nome= " + nome + "\ncpf= " + cpf
                 + "\nidade= " + idade + "\ncategoria= " + categoria + '}';
     }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public Double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Double salario) {
+        this.salario = salario;
+    }
     
     public String getNome() {
         return nome;
+    }
+
+    public Boolean getTeste() {
+        return teste;
+    }
+
+    public void setTeste(Boolean teste) {
+        this.teste = teste;
     }
 
     public void setNome(String nome) {
