@@ -35,10 +35,11 @@ import static javafx.scene.input.KeyCode.T;
  * @author 99039833
  */
 public class CollectorsTeste {
+
     private static Map<String, Map<String, Map<String, Double>>> mapa = new TreeMap();
     private static Map<String, Map<String, Double>> map2 = new TreeMap();
-    private static Map<String, Double> map3 = new TreeMap();  
-    
+    private static Map<String, Double> map3 = new TreeMap();
+
     public static void main(String[] args) {
         //<editor-fold defaultstate="collapsed" desc="lista">
         List<Pessoa> list = new ArrayList<>();
@@ -107,29 +108,28 @@ public class CollectorsTeste {
 //            System.out.printf("\nBairro: %s"
 //                    + "\nMedia por bairro: R$ %.2f", values.getKey(), values.getValue());
 //        });
-//            System.out.println("teste map");
-//            Map<String, Map<String, Map<String, Double>>> map1 = new TreeMap();
-//            Map<String, Map<String, Double>> map2 = new TreeMap();
-//            Map<String, Double> map3 = new TreeMap();
-//            map3.put("Breno", 1200D);
-//            map2.put("Medico", map3);
-//            map1.put("Siqueira", map2);
-//            
-//            map1.entrySet().forEach(m1 -> {
-//                System.out.println("Bairro: "+ m1.getKey());
-//                m1.getValue().entrySet().forEach(m2 -> {
-//                    System.out.println("Cargo: " + m2.getKey());
-//                    m2.getValue().entrySet().forEach(m3 -> {
-//                        System.out.println("Funcionario: "+ m3.getKey()
-//                        + "; salario = R$ " + m3.getValue());
-//                    });
-//                });
-//            });
-         
-        Map<String, Double> 
-            medSalCargo = list.stream()
-                    .collect(groupingBy(Pessoa::getCargo,averagingDouble(Pessoa::getSalario)));
-        
+        System.out.println("teste map");
+        Map<String, Map<String, Map<String, Double>>> map1 = new TreeMap();
+        Map<String, Map<String, Double>> map2 = new TreeMap();
+        Map<String, Double> map3 = new TreeMap();
+        map3.put("Breno", 1200D);
+        map2.put("Medico", map3);
+        map1.put("Siqueira", map2);
+
+        map1.entrySet().forEach(m1 -> {
+            System.out.println("Bairro: " + m1.getKey());
+            m1.getValue().entrySet().forEach(m2 -> {
+                System.out.println("Cargo: " + m2.getKey());
+                m2.getValue().entrySet().forEach(m3 -> {
+                    System.out.println("Funcionario: " + m3.getKey()
+                            + "; salario = R$ " + m3.getValue());
+                });
+            });
+        });
+
+        Map<String, Double> medSalCargo = list.stream()
+                .collect(groupingBy(Pessoa::getCargo, averagingDouble(Pessoa::getSalario)));
+
 //        Map<String, List<String>> pesPorCargo = list.stream().collect(groupingBy(Pessoa::getCargo, mapping(Pessoa::getNome)));
 //        
 //            medSalCargo.entrySet().forEach(p -> { 
@@ -142,31 +142,29 @@ public class CollectorsTeste {
 //                    });
 //            
 //            });
-        
-
- 
     }
-    public static void setMap (Map<String, Map<String, Map<String, Double>>> mapa){
+
+    public static void setMap(Map<String, Map<String, Map<String, Double>>> mapa) {
         CollectorsTeste.mapa = mapa;
     }
-    
-    public static void setMap2 (Map<String, Map<String, Double>> map2 ){
+
+    public static void setMap2(Map<String, Map<String, Double>> map2) {
         CollectorsTeste.map2 = map2;
     }
-    
-    public static Map<String, Map<String, Map<String, Double>>> getMapa(){
+
+    public static Map<String, Map<String, Map<String, Double>>> getMapa() {
         return mapa;
     }
-    
-    public static Map<String, Map<String, Double>> getMap2 (){
+
+    public static Map<String, Map<String, Double>> getMap2() {
         return map2;
     }
-    
-    public static void setMap3(Map<String, Double> map3){
+
+    public static void setMap3(Map<String, Double> map3) {
         CollectorsTeste.map3 = map3;
     }
-    
-    public static Map<String, Double> getMap3(){
+
+    public static Map<String, Double> getMap3() {
         return map3;
     }
 }

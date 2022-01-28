@@ -1,8 +1,11 @@
 package br.com.abc.javacore.Heranca.classe;
 
+import java.util.ArrayList;
+import static java.util.Arrays.asList;
+import java.util.List;
 import java.util.Objects;
 
-public class Pessoa extends Object{
+public class Pessoa extends Object implements Comparable<Pessoa>{
 
     protected String nome;
     protected String cpf;
@@ -24,6 +27,18 @@ public class Pessoa extends Object{
     }
 
     public Pessoa() {
+    }
+    
+    public static List<Pessoa> getList(){
+        List<Pessoa> list = new ArrayList<>();
+        Pessoa pessoa1 = new Pessoa("Breno", "629.543", 17, 'B', 2000d, "Auxiliar tecnico");
+        Pessoa pessoa2 = new Pessoa("Elma", "629.543", 40, 'A', 1000d, "Medico");
+        Pessoa pessoa3 = new Pessoa("Ezson", "867.876", 30, 'B', 1000d, "Bancario");
+        Pessoa pessoa4 = new Pessoa("Eduarda", "324.476", 12, 'C', 4000d, "Engenheiro");
+        Pessoa pessoa5 = new Pessoa("Emerson", "867.453", 18, 'B', 2500d, "engenheiro civil");
+        Pessoa pessoa6 = new Pessoa("Thaina", "234.535", 55, 'A', 700d, "Motoboy");
+        list.addAll(asList(pessoa1,pessoa2, pessoa3,pessoa4,pessoa5,pessoa6));
+        return list;
     }
 
     @Override
@@ -57,7 +72,7 @@ public class Pessoa extends Object{
     @Override
     public String toString() {
         return "Pessoa{" + "nome= " + nome + "\ncpf= " + cpf
-                + "\nidade= " + idade + "\ncategoria= " + categoria + '}';
+                + "\nidade= " + idade + "\ncategoria= " + categoria + " salario =" + salario.toString() +'}';
     }
 
     public String getCargo() {
@@ -122,5 +137,11 @@ public class Pessoa extends Object{
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    @Override
+    public int compareTo(Pessoa o) {
+        return this.idade.compareTo(o.idade);
+        //To change body of generated methods, choose Tools | Templates.
     }
 }
